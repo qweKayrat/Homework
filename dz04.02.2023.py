@@ -29,11 +29,12 @@ def int_to_tuple(digits):
 def stat_tuple(digits):
     tpl = int_to_tuple(digits)
     print(tpl)
-    for i in range(10):
-        if i in tpl:
-            print(f'Количество {i} = {tpl.count(i)}')
-        else:
-            continue
+    [print(f'Количество {i} = {tpl.count(i)}') for i in range(10) if i in tpl]
+    # for i in range(10):
+    #     if i in tpl:
+    #         print(f'Количество {i} = {tpl.count(i)}')
+    #     else:
+    #         continue
 
 
 stat_tuple(s)
