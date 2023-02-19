@@ -5,10 +5,10 @@ s = 0
 def square_parallelepiped1(a, b, c):
     global s
 
-    def square_rectangle1():
-        return a * b, a * c, b * c
+    def square_rectangle1(i, j):
+        return i * j
 
-    ab, ac, bc = square_rectangle1()
+    ab, ac, bc = square_rectangle1(a, b), square_rectangle1(a, c), square_rectangle1(b, c)
     s = 2 * (ab + ac + bc)
 
 
@@ -24,10 +24,11 @@ print('-' * 8)
 
 # Вариант Площадь - локальная переменная
 def square_parallelepiped2(a, b, c):
-    def square_rectangle2():
-        return a * b, a * c, b * c
+    def square_rectangle1(i, j):
+        return i * j
 
-    ab, ac, bc = square_rectangle2()
+    ab, ac, bc = square_rectangle1(a, b), square_rectangle1(a, c), square_rectangle1(b, c)
+
     s1 = 2 * (ab + ac + bc)
     return s1
 
@@ -48,17 +49,16 @@ print('-' * 8)
 def square_parallelepiped3(a, b, c):
     s3 = 0
 
-    def square_rectangle3():
+    def square_rectangle3(i, j):
         nonlocal s3
-        s3 = 2 * ((a * b) + (a * c) + (b * c))
+        s3 += i * j
 
-    square_rectangle3()
-    return s3
+    square_rectangle3(a, b)
+    square_rectangle3(a, c)
+    square_rectangle3(b, c)
+    return 2 * s3
 
 
-s4 = square_parallelepiped3(2, 4, 6)
-print(s4)
-s4 = square_parallelepiped3(5, 8, 2)
-print(s4)
-s4 = square_parallelepiped3(1, 6, 8)
-print(s4)
+print(square_parallelepiped3(2, 4, 6))
+print(square_parallelepiped3(5, 8, 2))
+print(square_parallelepiped3(1, 6, 8))
