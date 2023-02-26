@@ -7,6 +7,7 @@ def decorator(func):
         nonlocal avg
         avg = func(*args) / len(args)
         print(f"Среднее арифметическое чисел {str(args).replace('(', '').replace(')', '')} = {avg}")
+
         # Тут добавил replace(), для того чтобы вывод был без скобок картежа
 
     return wrapper
